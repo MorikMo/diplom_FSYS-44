@@ -1,0 +1,13 @@
+filebeat.inputs:
+  - type: filestream
+    id: nginx-access
+    paths:
+      - /var/log/nginx/access.log
+
+  - type: filestream
+    id: nginx-error
+    paths:
+      - /var/log/nginx/error.log
+
+output.elasticsearch:
+  hosts: ["elasticsearch.ru-central1.internal:9200"]

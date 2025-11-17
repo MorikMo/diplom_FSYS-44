@@ -1,0 +1,23 @@
+- hosts: all
+  become: true
+  roles:
+    - common
+
+- hosts: web
+  become: true
+  roles:
+    - nginx
+    - zabbix_agent
+    - filebeat
+
+- hosts: elastic
+  become: true
+  roles:
+    - elasticsearch
+    - zabbix_agent
+
+- hosts: kibana
+  become: true
+  roles:
+    - kibana
+    - zabbix_agent

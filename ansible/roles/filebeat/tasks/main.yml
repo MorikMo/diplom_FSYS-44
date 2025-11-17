@@ -1,0 +1,18 @@
+- name: Install filebeat
+  apt:
+    name: filebeat
+    state: present
+
+- name: Copy filebeat config
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+
+- name: Enable modules
+  command: filebeat modules enable nginx
+
+- name: Restart filebeat
+  systemd:
+    name: filebeat
+    state: restarted
+    enabled: true
