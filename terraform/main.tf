@@ -59,11 +59,11 @@ resource "yandex_vpc_security_group" "sg_bastion" {
   name       = "sg-bastion"
   network_id = yandex_vpc_network.main.id
 
-  # SSH только с твоего IP
+  # SSH только с своего IP
   ingress {
     protocol       = "TCP"
     port           = 22
-    v4_cidr_blocks = ["167.17.191.16/32"]
+    v4_cidr_blocks = ["92.38.37.188"]
     #v4_cidr_blocks = ["178.64.137.192/32"]
     #v4_cidr_blocks = [var.your_ip_cidr]
   }
@@ -375,7 +375,7 @@ resource "yandex_vpc_security_group" "sg_zabbix" {
   ingress {
     protocol       = "TCP"
     port           = 22
-    v4_cidr_blocks = ["0.0.0.0/0"] # или твой IP
+    v4_cidr_blocks = ["0.0.0.0/0"]
   }
 
   # Хост может делать исходящие запросы
